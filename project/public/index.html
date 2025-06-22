@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enkrypt Enterprise - INR to USDT Converter</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <div class="brand-icon">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                        <path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                        <path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <span class="brand-text">Enkrypt Enterprise</span>
+            </div>
+            <div class="nav-menu">
+                <a href="#home" class="nav-link active">Home</a>
+                <a href="#profile" class="nav-link hidden" id="profileLink">Profile</a>
+                <a href="#dashboard" class="nav-link hidden" id="dashboardLink">Dashboard</a>
+                <a href="#wallet" class="nav-link hidden" id="walletLink">Wallet</a>
+                <div class="auth-buttons">
+                    <button id="loginBtn" class="btn btn-outline">Login</button>
+                    <button id="signupBtn" class="btn btn-primary">Sign Up</button>
+                    <div id="userMenu" class="user-menu hidden">
+                        <img id="userAvatar" class="user-avatar" src="" alt="User">
+                        <span id="userName" class="user-name"></span>
+                        <button id="logoutBtn" class="btn btn-outline btn-sm">Logout</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Home Section -->
+        <section id="home" class="section active">
+            <div class="hero">
+                <div class="hero-content">
+                    <div class="hero-header">
+                        <h1 class="hero-title">Convert INR to USDT 🇮🇳</h1>
+                        <p class="hero-subtitle">at zero fee.</p>
+                    </div>
+                    
+                    <div class="feature-badges">
+                        <span class="badge">Zero Fee ✨</span>
+                        <span class="badge">Google FX rates ⚡</span>
+                        <span class="badge">Quick Transfers 🚀</span>
+                    </div>
+
+                    <button class="get-started-btn" id="getStartedBtn">
+                        Get Started
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- Converter Card -->
+                <div class="converter-card">
+                    <div class="rate-display">
+                        <div class="rate-info">
+                            <span class="rate-icon">⚡</span>
+                            <span class="rate-text" id="currentRate">Google FX rate: $1.00 = ₹86.58</span>
+                            <div class="info-icon">ℹ️</div>
+                        </div>
+                    </div>
+
+                    <div class="converter-section">
+                        <div class="input-section">
+                            <label class="section-label">You send</label>
+                            <div class="amount-input-wrapper">
+                                <input type="number" id="sendAmount" class="amount-input" placeholder="1000" value="1000">
+                                <div class="currency-selector">
+                                    <img src="https://flagcdn.com/w20/us.png" alt="USD" class="flag-icon">
+                                    <span>USD</span>
+                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M6 9l6 6 6-6"/>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="exchange-info">
+                            <div class="exchange-row">
+                                <span>Exchange rate</span>
+                                <span class="rate-value">$1.00 = ₹<span id="exchangeRate">86.58</span></span>
+                            </div>
+                            <div class="exchange-row">
+                                <span>Enkrypt Enterprise fee (0%)</span>
+                                <span>$0.00</span>
+                            </div>
+                            <div class="exchange-row">
+                                <span>Transfer time ⓘ</span>
+                                <span>Within 24 hours</span>
+                            </div>
+                        </div>
+
+                        <div class="output-section">
+                            <label class="section-label">Recipient gets</label>
+                            <div class="amount-output-wrapper">
+                                <div class="amount-output" id="receiveAmount">87,083.00</div>
+                                <div class="currency-selector">
+                                    <img src="https://flagcdn.com/w20/in.png" alt="INR" class="flag-icon">
+                                    <span>INR</span>
+                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M6 9l6 6 6-6"/>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="welcome-bonus">
+                            <div class="bonus-icon">🎁</div>
+                            <div class="bonus-text">
+                                <strong>Welcome Bonus:</strong>
+                                <span>₹0.50 Above Google Rate until the end of June!</span>
+                            </div>
+                        </div>
+
+                        <button class="transfer-btn" id="transferBtn">Transfer Now</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="trust-section">
+                <div class="trust-badge">
+                    <span class="shield-icon">🛡️</span>
+                    <span>100% Safe & Compliant</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Profile Section -->
+        <section id="profile" class="section">
+            <div class="profile-container">
+                <div class="profile-header">
+                    <h2>Profile Settings</h2>
+                    <p>Manage your account information and preferences</p>
+                </div>
+
+                <div class="profile-content">
+                    <div class="profile-card">
+                        <div class="profile-avatar-section">
+                            <div class="profile-avatar" id="profileAvatar">
+                                <img id="profileAvatarImg" src="" alt="Profile">
+                            </div>
+                            <div class="profile-info">
+                                <h3 id="profileName">User Name</h3>
+                                <p id="profileEmail">user@example.com</p>
+                                <span class="profile-status" id="profileStatus">Verified</span>
+                            </div>
+                        </div>
+
+                        <div class="profile-stats">
+                            <div class="stat-item">
+                                <div class="stat-value" id="profileBalance">0.00</div>
+                                <div class="stat-label">USDT Balance</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value" id="profileTransactions">0</div>
+                                <div class="stat-label">Total Transactions</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value" id="profileJoined">--</div>
+                                <div class="stat-label">Member Since</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="profile-sections">
+                        <div class="profile-section">
+                            <h4>Account Information</h4>
+                            <div class="form-group">
+                                <label>Full Name</label>
+                                <input type="text" id="editName" class="form-input" placeholder="Enter your full name">
+                            </div>
+                            <div class="form-group">
+                                <label>Email Address</label>
+                                <input type="email" id="editEmail" class="form-input" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label>Phone Number</label>
+                                <input type="tel" id="editPhone" class="form-input" placeholder="Enter your phone number">
+                            </div>
+                            <button class="btn btn-primary" id="updateProfileBtn">Update Profile</button>
+                        </div>
+
+                        <div class="profile-section">
+                            <h4>Security Settings</h4>
+                            <div class="security-item">
+                                <div class="security-info">
+                                    <h5>Two-Factor Authentication</h5>
+                                    <p>Add an extra layer of security to your account</p>
+                                </div>
+                                <button class="btn btn-outline" id="enable2FABtn">Enable</button>
+                            </div>
+                            <div class="security-item">
+                                <div class="security-info">
+                                    <h5>Change Password</h5>
+                                    <p>Update your account password</p>
+                                </div>
+                                <button class="btn btn-outline" id="changePasswordBtn">Change</button>
+                            </div>
+                        </div>
+
+                        <div class="profile-section">
+                            <h4>Preferences</h4>
+                            <div class="preference-item">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="emailNotifications">
+                                    <span class="checkmark"></span>
+                                    Email notifications for transactions
+                                </label>
+                            </div>
+                            <div class="preference-item">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="smsNotifications">
+                                    <span class="checkmark"></span>
+                                    SMS notifications for important updates
+                                </label>
+                            </div>
+                            <div class="preference-item">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="marketingEmails">
+                                    <span class="checkmark"></span>
+                                    Marketing emails and promotions
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dashboard Section -->
+        <section id="dashboard" class="section">
+            <div class="dashboard-container">
+                <div class="dashboard-header">
+                    <h2>Dashboard</h2>
+                    <div class="dashboard-stats">
+                        <div class="stat-card">
+                            <div class="stat-icon">₮</div>
+                            <div class="stat-info">
+                                <span class="stat-value" id="totalBalance">0.00</span>
+                                <span class="stat-label">USDT Balance</span>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">📊</div>
+                            <div class="stat-info">
+                                <span class="stat-value" id="totalTransactions">0</span>
+                                <span class="stat-label">Transactions</span>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon" id="kycStatusIcon">⏳</div>
+                            <div class="stat-info">
+                                <span class="stat-value" id="kycStatusText">Pending</span>
+                                <span class="stat-label">KYC Status</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- KYC Section -->
+                <div class="kyc-section">
+                    <div class="section-header">
+                        <h3>KYC Verification</h3>
+                        <div class="kyc-status" id="kycStatus">
+                            <span class="status-badge pending">Pending</span>
+                        </div>
+                    </div>
+                    
+                    <div id="kycForm" class="kyc-form">
+                        <div class="kyc-info">
+                            <p>Complete your KYC verification to start trading. Upload the following documents:</p>
+                            <ul>
+                                <li>Aadhaar Card (Front & Back)</li>
+                                <li>PAN Card</li>
+                                <li>Selfie with documents</li>
+                            </ul>
+                        </div>
+                        
+                        <form id="kycUploadForm" class="upload-form">
+                            <div class="file-upload-group">
+                                <label class="file-upload-label">
+                                    <span class="upload-icon">📄</span>
+                                    <span class="upload-text">Aadhaar Card</span>
+                                    <input type="file" name="aadhaar" accept="image/*" required>
+                                </label>
+                            </div>
+                            
+                            <div class="file-upload-group">
+                                <label class="file-upload-label">
+                                    <span class="upload-icon">🆔</span>
+                                    <span class="upload-text">PAN Card</span>
+                                    <input type="file" name="pan" accept="image/*" required>
+                                </label>
+                            </div>
+                            
+                            <div class="file-upload-group">
+                                <label class="file-upload-label">
+                                    <span class="upload-icon">🤳</span>
+                                    <span class="upload-text">Selfie</span>
+                                    <input type="file" name="selfie" accept="image/*" required>
+                                </label>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary">Submit KYC Documents</button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Transaction History -->
+                <div class="transactions-section">
+                    <div class="section-header">
+                        <h3>Transaction History</h3>
+                        <button id="refreshTransactions" class="btn btn-outline btn-sm">Refresh</button>
+                    </div>
+                    
+                    <div class="transactions-table">
+                        <div class="table-header">
+                            <div class="table-cell">Date</div>
+                            <div class="table-cell">Type</div>
+                            <div class="table-cell">Amount</div>
+                            <div class="table-cell">Status</div>
+                            <div class="table-cell">TX Hash</div>
+                        </div>
+                        <div id="transactionsList" class="table-body">
+                            <div class="empty-state">
+                                <span class="empty-icon">📝</span>
+                                <span class="empty-text">No transactions yet</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Wallet Section -->
+        <section id="wallet" class="section">
+            <div class="wallet-container">
+                <div class="wallet-header">
+                    <h2>USDT Wallet</h2>
+                    <div class="wallet-balance">
+                        <span class="balance-label">Available Balance</span>
+                        <span class="balance-amount" id="walletBalance">0.00 USDT</span>
+                    </div>
+                </div>
+
+                <div class="wallet-address-card">
+                    <div class="address-header">
+                        <h3>Your Wallet Address</h3>
+                        <button id="copyAddress" class="btn btn-outline btn-sm">Copy</button>
+                    </div>
+                    <div class="wallet-address" id="walletAddress">
+                        Connect wallet to view address
+                    </div>
+                </div>
+
+                <div class="wallet-actions">
+                    <div class="action-card">
+                        <h3>Send USDT</h3>
+                        <form id="transferForm" class="transfer-form">
+                            <div class="input-group">
+                                <label class="input-label">Recipient Address</label>
+                                <input type="text" id="recipientAddress" class="form-input" placeholder="Enter USDT address" required>
+                            </div>
+                            
+                            <div class="input-group">
+                                <label class="input-label">Amount (USDT)</label>
+                                <input type="number" id="transferAmount" class="form-input" placeholder="0.00" min="0" step="0.01" required>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary">Send USDT</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Auth Modal -->
+    <div id="authModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="authModalTitle">Login</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            
+            <div class="modal-body">
+                <form id="authForm" class="auth-form">
+                    <div class="input-group">
+                        <label class="input-label">Email</label>
+                        <input type="email" id="authEmail" class="form-input" required>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label class="input-label">Password</label>
+                        <input type="password" id="authPassword" class="form-input" required>
+                    </div>
+                    
+                    <div id="signupFields" class="signup-fields hidden">
+                        <div class="input-group">
+                            <label class="input-label">Confirm Password</label>
+                            <input type="password" id="authConfirmPassword" class="form-input">
+                        </div>
+                        
+                        <div class="input-group">
+                            <label class="input-label">Full Name</label>
+                            <input type="text" id="authDisplayName" class="form-input">
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary btn-large">
+                        <span id="authSubmitText">Login</span>
+                    </button>
+                </form>
+                
+                <div class="auth-switch">
+                    <span id="authSwitchText">Don't have an account?</span>
+                    <button id="authSwitchBtn" class="link-btn">Sign up</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Payment Modal -->
+    <div id="paymentModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Complete Payment</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            
+            <div class="modal-body">
+                <div class="payment-summary">
+                    <div class="summary-row">
+                        <span>You Pay:</span>
+                        <span id="paymentINR">₹0.00</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>You Get:</span>
+                        <span id="paymentUSDT">0.00 USDT</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Exchange Rate:</span>
+                        <span id="paymentRate">1 INR = 0.00 USDT</span>
+                    </div>
+                </div>
+                
+                <button id="proceedPayment" class="btn btn-primary btn-large">
+                    Pay with Razorpay
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notifications -->
+    <div id="toastContainer" class="toast-container"></div>
+
+    <!-- Loading Overlay -->
+    <div id="loadingOverlay" class="loading-overlay hidden">
+        <div class="loading-spinner"></div>
+        <div class="loading-text">Processing...</div>
+    </div>
+
+    <!-- WhatsApp Float Button -->
+    <div class="whatsapp-float">
+        <a href="https://wa.me/1234567890" target="_blank" class="whatsapp-btn">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/>
+            </svg>
+        </a>
+    </div>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+    
+    <!-- Razorpay SDK -->
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    
+    <!-- Main Application Script -->
+    <script src="app.js"></script>
+</body>
+</html>

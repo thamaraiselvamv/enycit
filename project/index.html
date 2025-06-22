@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>INR to USDT Converter</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div id="app">
+      <div class="container">
+        <header class="header">
+          <div class="header-icon">
+            <div class="currency-icons">
+              <span class="currency-icon inr">₹</span>
+              <div class="exchange-arrow">⇄</div>
+              <span class="currency-icon usdt">₮</span>
+            </div>
+          </div>
+          <h1 class="title">INR to USDT Converter</h1>
+          <p class="subtitle">Convert Indian Rupee to Tether USD with real-time rates</p>
+        </header>
+
+        <div class="converter-card">
+          <div class="input-section">
+            <label for="inr-input" class="input-label">
+              <span class="label-icon">₹</span>
+              Indian Rupee (INR)
+            </label>
+            <div class="input-wrapper">
+              <span class="currency-symbol">₹</span>
+              <input 
+                type="number" 
+                id="inr-input" 
+                class="currency-input" 
+                placeholder="Enter amount"
+                min="0"
+                step="0.01"
+                autocomplete="off"
+              />
+              <button class="clear-btn" id="clear-btn" title="Clear input">×</button>
+            </div>
+          </div>
+
+          <div class="conversion-arrow">
+            <div class="arrow-container">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M7 17l9.2-9.2M17 17H7V7"/>
+              </svg>
+            </div>
+          </div>
+
+          <div class="output-section">
+            <label class="output-label">
+              <span class="label-icon">₮</span>
+              Tether USD (USDT)
+            </label>
+            <div class="output-wrapper">
+              <span class="currency-symbol">₮</span>
+              <div class="currency-output" id="usdt-output">0.00</div>
+              <button class="copy-btn" id="copy-btn" title="Copy result">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                  <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <div class="rate-info" id="rate-info">
+            <div class="loading-spinner" id="loading-spinner"></div>
+            <span class="rate-text" id="rate-text">Loading exchange rate...</span>
+            <button class="refresh-btn" id="refresh-btn" title="Refresh rates">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="23 4 23 10 17 10"></polyline>
+                <polyline points="1 20 1 14 7 14"></polyline>
+                <path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 0 1 3.51 15"></path>
+              </svg>
+            </button>
+          </div>
+
+          <div class="error-message" id="error-message"></div>
+
+          <div class="quick-amounts">
+            <span class="quick-label">Quick amounts:</span>
+            <div class="quick-buttons">
+              <button class="quick-btn" data-amount="1000">₹1,000</button>
+              <button class="quick-btn" data-amount="5000">₹5,000</button>
+              <button class="quick-btn" data-amount="10000">₹10,000</button>
+              <button class="quick-btn" data-amount="50000">₹50,000</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="info-section">
+          <div class="info-card">
+            <div class="info-icon">₮</div>
+            <h3>About USDT</h3>
+            <p>Tether (USDT) is a stablecoin cryptocurrency pegged to the US Dollar, maintaining a 1:1 ratio with USD for stable value.</p>
+          </div>
+          <div class="info-card">
+            <div class="info-icon">⚡</div>
+            <h3>Real-time Rates</h3>
+            <p>Exchange rates are updated in real-time from reliable financial APIs to provide the most accurate conversions.</p>
+          </div>
+          <div class="info-card">
+            <div class="info-icon">🔒</div>
+            <h3>Secure & Fast</h3>
+            <p>All calculations are performed locally in your browser. No personal data is stored or transmitted to external servers.</p>
+          </div>
+        </div>
+
+        <div class="stats-section">
+          <div class="stat-item">
+            <div class="stat-value" id="total-conversions">0</div>
+            <div class="stat-label">Conversions Today</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-value" id="last-update">--:--</div>
+            <div class="stat-label">Last Updated</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-value" id="api-status">●</div>
+            <div class="stat-label">API Status</div>
+          </div>
+        </div>
+
+        <footer class="footer">
+          <p>&copy; 2025 INR to USDT Converter. Exchange rates provided by reliable financial APIs.</p>
+          <div class="footer-links">
+            <span>Press Ctrl+R to refresh rates</span>
+            <span>•</span>
+            <span>Press ESC to clear input</span>
+          </div>
+        </footer>
+      </div>
+    </div>
+    <script src="main.js"></script>
+  </body>
+</html>
